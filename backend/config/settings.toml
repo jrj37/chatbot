@@ -1,0 +1,5 @@
+[default]
+
+MODEL_NAME = "qwen/qwen2.5-vl-32b-instruct:free"
+OPEN_ROUTER_URL ="https://openrouter.ai/api/v1/chat/completions"
+SERPAPI_URL = "https://serpapi.com/search"
