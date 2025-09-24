@@ -60,7 +60,7 @@ function App() {
             textShadow: "0 1px 4px rgba(255, 255, 255, 0.6)",
           }}
         >
-          Mistral Chat
+          TW3partner Chat
         </h1>
       </header>
       <main
