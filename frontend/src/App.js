@@ -4,7 +4,7 @@ import ChatInput from "./components/ChatInput";
 
 const sendPromptToAgent = async (prompt) => {
   try {
-    const response = await fetch(`http://localhost:8000/agent?prompt=${encodeURIComponent(prompt)}`);
+    const response = await fetch(`http://backend:8000/agent?prompt=${encodeURIComponent(prompt)}`);
     if (!response.ok) throw new Error("Erreur API");
     const data = await response.json();
     return data.response;
@@ -13,8 +13,6 @@ const sendPromptToAgent = async (prompt) => {
     return `Erreur du chatbot : ${error.message}`;
   }
 };
-
-
 
 function App() {
   const [messages, setMessages] = useState([]);
