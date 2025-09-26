@@ -16,6 +16,7 @@ settings = Dynaconf(
 )
 
 class Chatbot(BaseModel):
+    settings: object
     cleaned_text: str = Field(..., min_length=1)
     question: str = Field(..., min_length=1)
 
@@ -26,12 +27,12 @@ class Chatbot(BaseModel):
 
     def setup(self) -> str:
         chunks = chunk(self.cleaned_text)
-        vector_store = create_vector_store(chunks)
+        vector_store = create_vector_store(chunks,self.settings.API_TOGETHER_EMBEDDING)
         context = self.create_context(vector_store)
-        message = make_prompt(context,self.question)
+        message = make_prompt(context,self.question,settings)
         return message 
     
 if __name__ == "__main__":
     cleaned_text = clean_text("https://en.wikipedia.org/wiki/Medium_(website)")
-    chatbot = Chatbot(cleaned_text=cleaned_text,question="Donne moi la date de création de medium")
+    chatbot = Chatbot(settings=settings,cleaned_text=cleaned_text,question="Donne moi la date de création de medium")
     print(chatbot.setup())

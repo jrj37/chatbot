@@ -13,7 +13,7 @@ settings = Dynaconf(
     ],
 )
 
-def make_prompt(context:str,question:str) -> str:
+def make_prompt(context:str,question:str,settings:object) -> str:
     prompt = PromptTemplate(template="voici des extraits de documents liés à ta requête : {context}\n\nPeux-tu répondre à la question suivante : {question} ?",
                             input_variables=["context","question"])
     final_prompt = prompt.format(context=context, question=question)
