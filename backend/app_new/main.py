@@ -1,7 +1,7 @@
 """
 # backend/app/main.py
 """
-from app.api import Api               # Importe la classe Api contenant l'application FastAPI
+from app_new.api_new import Api               # Importe la classe Api contenant l'application FastAPI
 from dynaconf import Dynaconf        # Importe Dynaconf pour gérer la configuration de manière flexible
 
 # Chargement de la configuration depuis deux fichiers : settings.toml et .secrets.toml

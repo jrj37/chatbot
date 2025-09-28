@@ -21,7 +21,7 @@ def make_prompt(context:str,question:str,settings:object) -> str:
     payload = {
         "model": settings.DEFAULT.MODEL_NAME,
         "messages": [
-        {"role": "system", "content": "Tu synthétises des recherches web pour répondre de manière structurée, concise et sourcée."},    
+        {"role": "system", "content": "Tu synthétises des recherches web pour répondre de manière structurée, concise et sourcée. Tu réponds qu'a l'aide du contexte fournis."},    
         {"role": "user", "content": final_prompt}
         ]
     }

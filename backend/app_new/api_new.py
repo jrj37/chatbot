@@ -3,7 +3,8 @@
 """
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.agent import Agent
+from app_new.chatbot_new import Chatbot
+from dynaconf import Dynaconf
 
 class Api:
     def __init__(self, settings: object) -> None:
@@ -48,10 +49,11 @@ class Api:
                 dict: Réponse générée par l'agent, au format {"response": réponse_textuelle}
             """
             # Création d'une instance de l'agent avec les paramètres
-            agent = Agent(self.settings)
+            chatbot = Chatbot(settings=self.settings,question=prompt)
 
             # Exécution du prompt par l'agent
-            resume = agent.run(prompt)
+            resume = chatbot.setup()
+            print(resume)
 
             # Retourne la réponse dans un dictionnaire JSON
             return {"response": resume}
